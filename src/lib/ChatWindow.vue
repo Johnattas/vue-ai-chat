@@ -1,7 +1,8 @@
 <template>
 	<div class="vac-card-window" :style="[{ height }, cssVars]">
 		<div class="vac-chat-container">
-			<rooms-list v-if="!singleRoomCasted" :current-user-id="currentUserId" :rooms="orderedRooms"
+			<rooms-list
+v-if="!singleRoomCasted" :current-user-id="currentUserId" :rooms="orderedRooms"
 				:loading-rooms="loadingRoomsCasted" :rooms-loaded="roomsLoadedCasted" :room="room"
 				:room-actions="roomActionsCasted" :custom-search-room-enabled="customSearchRoomEnabled"
 				:text-messages="t" :show-search="showSearchCasted" :show-add-room="showAddRoomCasted"
@@ -16,7 +17,8 @@
 				</template>
 			</rooms-list>
 
-			<room :current-user-id="currentUserId" :rooms="roomsCasted" :room-id="room.roomId || ''"
+			<room
+:current-user-id="currentUserId" :rooms="roomsCasted" :room-id="room.roomId || ''"
 				:load-first-room="loadFirstRoomCasted" :messages="messagesCasted" :room-message="roomMessage"
 				:messages-loaded="messagesLoadedCasted" :menu-actions="menuActionsCasted"
 				:message-actions="messageActionsCasted" :message-selection-actions="messageSelectionActionsCasted"
@@ -58,7 +60,7 @@
 
 <script setup lang="ts">
     import { ref, computed, watch, onMounted, onUpdated, defineProps, defineEmits, defineExpose, Ref } from 'vue'
-    import RoomsList from '@/lib/RoomsList/RoomsList.vue'
+    import RoomsList from './RoomsList/RoomsList.vue'
     import Room from './Room/Room.vue'
     import MediaPreview from './MediaPreview/MediaPreview.vue'
 
@@ -66,49 +68,7 @@
     import { defaultThemeStyles, cssThemeVars } from '../themes'
     import { roomsValidation, partcipantsValidation } from '../utils/data-validation'
 
-    // Props
-    interface AutoScrollConfig {
-      send: {
-        new: boolean;
-        newAfterScrollUp: boolean;
-      };
-      receive: {
-        new: boolean;
-        newAfterScrollUp: boolean;
-      };
-    }
-
-    interface TextFormattingConfig {
-      disabled: boolean;
-    }
-
-    interface LinkOptionsConfig {
-      disabled: boolean;
-      target: string;
-      rel: string | null;
-    }
-
-    interface UsernameOptionsConfig {
-      minUsers: number;
-      currentUser: boolean;
-    }
-
-    interface RoomType {
-      roomId: string;
-      index?: number;
-      users: Array<any>; // Adicione uma interface mais específica se os usuários tiverem uma estrutura definida
-      // Adicione outras propriedades da sala aqui
-    }
-
-    interface MessageType {
-      // Adicione propriedades da mensagem aqui
-    }
-
-    interface ActionType {
-      name: string;
-      title: string;
-      onlyMe?: boolean;
-    }
+    import { type AutoScrollConfig, type TextFormattingConfig, type LinkOptionsConfig, type UsernameOptionsConfig, type RoomType, type MessageType, type ActionType } from './Types/types'
 
     const props = defineProps({
         height: { type: String, default: '600px' },

@@ -57,7 +57,7 @@
 </template>
 
 <script setup lang="ts">
-    import { ref, computed, watch, onMounted, onUpdated, defineProps, defineEmits, defineExpose, Ref, type PropType } from 'vue'
+    import { ref, computed, watch, onMounted, onUpdated, defineProps, defineEmits, defineExpose, Ref } from 'vue'
     import RoomsList from './RoomsList/RoomsList.vue'
     import Room from './Room/Room.vue'
     import MediaPreview from './MediaPreview/MediaPreview.vue'

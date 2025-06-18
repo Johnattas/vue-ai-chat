@@ -366,7 +366,7 @@ const t = computed(() => {
 
 const cssVars = computed(() => {
 	const defaultStyles = defaultThemeStyles[props.theme as keyof typeof defaultThemeStyles];
-	const customStyles: Record<string, any> = {};
+	const customStyles: any = {};
 
 	Object.keys(defaultStyles).map(key => {
 		customStyles[key] = {

@@ -1,8 +1,8 @@
 import { defineCustomElement } from 'vue'
-import ChatWindow from './ChatWindow'
+import AdvancedChatAi from './ChatWindow'
 
-export { ChatWindow }
-export const VueAdvancedChat = defineCustomElement(ChatWindow)
+export { AdvancedChatAi }
+export const VueAdvancedChat = defineCustomElement(AdvancedChatAi)
 
 const PACKAGE_NAME = 'vue-advanced-chat'
 

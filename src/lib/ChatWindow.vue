@@ -1,5 +1,5 @@
 <template>
-	33
+	34
 	<div class="vac-card-window" :style="[{ height }, cssVars]">
 		<div class="vac-chat-container">
 			<rooms-list v-if="!singleRoomCasted" :current-user-id="currentUserId" :rooms="orderedRooms"

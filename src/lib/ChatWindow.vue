@@ -1,5 +1,4 @@
 <template>
-	34
 	<div class="vac-card-window" :style="[{ height }, cssVars]">
 		<div class="vac-chat-container">
 			<rooms-list v-if="!singleRoomCasted" :current-user-id="currentUserId" :rooms="orderedRooms"
@@ -112,88 +111,88 @@
     }
 
     const props = defineProps({
-      height: { type: String, default: '600px' },
-      theme: { type: String, default: 'light' },
-      styles: { type: [Object, String] as PropType<Record<string, any> | string>, default: () => ({}) },
-      responsiveBreakpoint: { type: Number, default: 900 },
-      singleRoom: { type: [Boolean, String] as PropType<boolean | string>, default: false },
-      roomsListOpened: { type: [Boolean, String] as PropType<boolean | string>, default: true },
-      textMessages: { type: [Object, String] as PropType<Record<string, any> | string>, default: () => ({}) },
-      currentUserId: { type: String, default: '' },
-      rooms: { type: [Array, String] as PropType<RoomType[] | string>, default: () => [] },
-      roomsOrder: { type: String, default: 'desc' },
-      loadingRooms: { type: [Boolean, String] as PropType<boolean | string>, default: false },
-      roomsLoaded: { type: [Boolean, String] as PropType<boolean | string>, default: false },
-      roomId: { type: String as PropType<string | null>, default: null },
-      loadFirstRoom: { type: [Boolean, String] as PropType<boolean | string>, default: true },
-      messages: { type: [Array, String] as PropType<MessageType[] | string>, default: () => [] },
-      messagesLoaded: { type: [Boolean, String] as PropType<boolean | string>, default: false },
-      roomActions: { type: [Array, String] as PropType<ActionType[] | string>, default: () => [] },
-      menuActions: { type: [Array, String] as PropType<ActionType[] | string>, default: () => [] },
-      messageActions: {
-        type: [Array, String] as PropType<ActionType[] | string>,
-        default: () => [
-          { name: 'replyMessage', title: 'Reply' },
-          { name: 'editMessage', title: 'Edit Message', onlyMe: true },
-          { name: 'deleteMessage', title: 'Delete Message', onlyMe: true },
-          { name: 'selectMessages', title: 'Select' }
-        ]
-      },
-      messageSelectionActions: { type: [Array, String] as PropType<ActionType[] | string>, default: () => [] },
-      autoScroll: {
-        type: [Object, String] as PropType<AutoScrollConfig | string>,
-        default: () => {
-          return {
-            send: {
-              new: true,
-              newAfterScrollUp: true
-            },
-            receive: {
-              new: true,
-              newAfterScrollUp: false
+        height: { type: String, default: '600px' },
+        theme: { type: String, default: 'light' },
+        styles: { type: [Object, String], default: () => ({}) },
+        responsiveBreakpoint: { type: Number, default: 900 },
+        singleRoom: { type: [Boolean, String], default: false },
+        roomsListOpened: { type: [Boolean, String], default: true },
+        textMessages: { type: [Object, String], default: () => ({}) },
+        currentUserId: { type: String, default: '' },
+        rooms: { type: [Array, String], default: () => [] },
+        roomsOrder: { type: String, default: 'desc' },
+        loadingRooms: { type: [Boolean, String], default: false },
+        roomsLoaded: { type: [Boolean, String], default: false },
+        roomId: { type: String, default: null },
+        loadFirstRoom: { type: [Boolean, String], default: true },
+        messages: { type: [Array, String], default: () => [] },
+        messagesLoaded: { type: [Boolean, String], default: false },
+        roomActions: { type: [Array, String], default: () => [] },
+        menuActions: { type: [Array, String], default: () => [] },
+        messageActions: {
+            type: [Array, String],
+            default: () => [
+                { name: 'replyMessage', title: 'Reply' },
+                { name: 'editMessage', title: 'Edit Message', onlyMe: true },
+                { name: 'deleteMessage', title: 'Delete Message', onlyMe: true },
+                { name: 'selectMessages', title: 'Select' }
+            ]
+        },
+        messageSelectionActions: { type: [Array, String], default: () => [] },
+        autoScroll: {
+            type: [Object, String],
+            default: () => {
+                return {
+                    send: {
+                        new: true,
+                        newAfterScrollUp: true
+                    },
+                    receive: {
+                        new: true,
+                        newAfterScrollUp: false
+                    }
+                }
             }
-          }
-        }
-      },
-      customSearchRoomEnabled: { type: [Boolean, String] as PropType<boolean | string>, default: false },
-      showSearch: { type: [Boolean, String] as PropType<boolean | string>, default: true },
-      showAddRoom: { type: [Boolean, String] as PropType<boolean | string>, default: true },
-      showSendIcon: { type: [Boolean, String] as PropType<boolean | string>, default: true },
-      showFiles: { type: [Boolean, String] as PropType<boolean | string>, default: true },
-      showAudio: { type: [Boolean, String] as PropType<boolean | string>, default: true },
-      audioBitRate: { type: Number, default: 128 },
-      audioSampleRate: { type: Number, default: 44100 },
-      showEmojis: { type: [Boolean, String] as PropType<boolean | string>, default: true },
-      showReactionEmojis: { type: [Boolean, String] as PropType<boolean | string>, default: true },
-      showNewMessagesDivider: { type: [Boolean, String] as PropType<boolean | string>, default: true },
-      showFooter: { type: [Boolean, String] as PropType<boolean | string>, default: true },
-      textFormatting: {
-        type: [Object, String] as PropType<TextFormattingConfig | string>,
-        default: () => ({
-          disabled: false
-        })
-      },
-      linkOptions: {
-        type: [Object, String] as PropType<LinkOptionsConfig | string>,
-        default: () => ({ disabled: false, target: '_blank', rel: null })
-      },
-      roomInfoEnabled: { type: [Boolean, String] as PropType<boolean | string>, default: false },
-      textareaActionEnabled: { type: [Boolean, String] as PropType<boolean | string>, default: false },
-      textareaAutoFocus: { type: [Boolean, String] as PropType<boolean | string>, default: true },
-      userTagsEnabled: { type: [Boolean, String] as PropType<boolean | string>, default: true },
-      emojisSuggestionEnabled: { type: [Boolean, String] as PropType<boolean | string>, default: true },
-      roomMessage: { type: String, default: '' },
-      scrollDistance: { type: Number, default: 60 },
-      acceptedFiles: { type: String, default: '*' },
-      captureFiles: { type: String, default: '' },
-      multipleFiles: { type: [Boolean, String] as PropType<boolean | string>, default: true },
-      templatesText: { type: [Array, String] as PropType<string[] | string>, default: () => [] },
-      mediaPreviewEnabled: { type: [Boolean, String] as PropType<boolean | string>, default: true },
-      usernameOptions: {
-        type: [Object, String] as PropType<UsernameOptionsConfig | string>,
-        default: () => ({ minUsers: 3, currentUser: false })
-      },
-      emojiDataSource: { type: String as PropType<string | undefined>, default: undefined }
+        },
+        customSearchRoomEnabled: { type: [Boolean, String], default: false },
+        showSearch: { type: [Boolean, String], default: true },
+        showAddRoom: { type: [Boolean, String], default: true },
+        showSendIcon: { type: [Boolean, String], default: true },
+        showFiles: { type: [Boolean, String], default: true },
+        showAudio: { type: [Boolean, String], default: true },
+        audioBitRate: { type: Number, default: 128 },
+        audioSampleRate: { type: Number, default: 44100 },
+        showEmojis: { type: [Boolean, String], default: true },
+        showReactionEmojis: { type: [Boolean, String], default: true },
+        showNewMessagesDivider: { type: [Boolean, String], default: true },
+        showFooter: { type: [Boolean, String], default: true },
+        textFormatting: {
+            type: [Object, String],
+            default: () => ({
+                disabled: false
+            })
+        },
+        linkOptions: {
+            type: [Object, String],
+            default: () => ({ disabled: false, target: '_blank', rel: null })
+        },
+        roomInfoEnabled: { type: [Boolean, String], default: false },
+        textareaActionEnabled: { type: [Boolean, String], default: false },
+        textareaAutoFocus: { type: [Boolean, String], default: true },
+        userTagsEnabled: { type: [Boolean, String], default: true },
+        emojisSuggestionEnabled: { type: [Boolean, String], default: true },
+        roomMessage: { type: String, default: '' },
+        scrollDistance: { type: Number, default: 60 },
+        acceptedFiles: { type: String, default: '*' },
+        captureFiles: { type: String, default: '' },
+        multipleFiles: { type: [Boolean, String], default: true },
+        templatesText: { type: [Array, String], default: () => [] },
+        mediaPreviewEnabled: { type: [Boolean, String], default: true },
+        usernameOptions: {
+            type: [Object, String],
+            default: () => ({ minUsers: 3, currentUser: false })
+        },
+        emojiDataSource: { type: String, default: undefined }
     })
 
     // Emits

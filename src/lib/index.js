@@ -1,1 +1,2 @@
-export { ChatWindow } from './ChatWindow'
+import ChatWindow from './ChatWindow.vue'
+export { ChatWindow }

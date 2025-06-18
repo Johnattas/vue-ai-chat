@@ -1,2 +1,2 @@
 import ChatWindow from './ChatWindow.vue'
-export { ChatWindow }
+export const VueAdvancedChat = ChatWindow

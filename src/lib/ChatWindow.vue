@@ -160,7 +160,7 @@ const props = defineProps({
 	showFiles: { type: [Boolean, String] as PropType<boolean | string>, default: true },
 	showAudio: { type: [Boolean, String] as PropType<boolean | string>, default: true },
 	audioBitRate: { type: Number, default: 128 },
-	audioSampleRate: { type: Number, default: new (window.AudioContext || (window as any).webkitAudioContext)().sampleRate },
+	audioSampleRate: { type: Number, default: 44100 },
 	showEmojis: { type: [Boolean, String] as PropType<boolean | string>, default: true },
 	showReactionEmojis: { type: [Boolean, String] as PropType<boolean | string>, default: true },
 	showNewMessagesDivider: { type: [Boolean, String] as PropType<boolean | string>, default: true },
@@ -466,7 +466,7 @@ watch(() => props.roomId, (newVal, oldVal) => {
 	}
 }, { immediate: true });
 
-watch(room, (val) => {
+watch(room, (val: any) => {
 	if (!val || Object.entries(val).length === 0) return;
 
 	roomsValidation(val);
